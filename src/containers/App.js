@@ -3,6 +3,7 @@ import CardList from '../components/CardList'
 import { robots } from '../robots'
 import Nav from '../components/Nav.js'
 import SearchBox from '../components/SearchBox'
+import ErrorBoundary from '../components/ErrorBoundary'
 
 export default class App extends Component {
     constructor() {
@@ -38,7 +39,9 @@ export default class App extends Component {
                 <Nav />
                 <h1 className='tc ttu code yellow'>RoboFriends</h1>
                 <SearchBox searchChange={this.searchChange} />
-                <CardList robots={filterRobots} />
+                <ErrorBoundary>
+                    <CardList robots={filterRobots} />
+                </ErrorBoundary>
             </div>
     }
 }
